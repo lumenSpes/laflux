@@ -22,26 +22,30 @@ class AclPermission
 
 
         $user_groups = \Auth::guard('admin')->user()->groups;
-        $current_url = url("/").'/'.$request->path();
+        $current_url = url("/") . '/' . $request->path();
         $accesstoken = "";
         if (!empty($param)) {
-           $action = $this->checkValidPermissions($param);
-           if($request->has('accesstoken')){
+            $action = $this->checkValidPermissions($param);
+            // dd($action);
+            if ($request->has('accesstoken')) {
                 $accesstoken = base64_decode($request->input('accesstoken'));
-           }else{
+            } else {
                 return redirect()->back()->with(['error' => 'Access Token Missing!']);
                 exit;
-           }
+            }
 
-           if($action === 0){
+            if ($action === 0) {
                 return redirect()->route('extensionsvalley.admin.dashboard')->with(['error' => 'Invalid Permission Defined!']);
                 exit;
-           }
+            }
             $count = \DB::table('acl_permission')
                 ->Where('group_id', $user_groups)
                 ->where('acl_key', trim($accesstoken))
                 ->Where($action, 1)
                 ->count();
+            //     $token = trim($accesstoken);
+            // dd($count,$token, $user_groups, $current_url);
+
         } else {
             $count = \DB::table('acl_permission')
                 ->Where('group_id', $user_groups)
@@ -49,31 +53,32 @@ class AclPermission
                 ->Where('view', 1)
                 ->count();
         }
-        if ((int)$count == 0) {
+        if ((int) $count == 0) {
             return redirect()->route('extensionsvalley.admin.dashboard')->with(['error' => 'Access Permission Denied!']);
         }
 
         return $next($request);
     }
 
-    public function checkValidPermissions($param){
-         switch ($param) {
-                case 'add':
-                    return 'adding';
-                    break;
-                case 'edit':
-                    return $param;
-                    break;
-                case 'view':
-                    return $param;
-                    break;
-                case 'trash':
-                    return $param;
-                    break;
-                default:
-                    return 0;
-                    break;
-            }
+    public function checkValidPermissions($param)
+    {
+        switch ($param) {
+            case 'add':
+                return 'adding';
+                break;
+            case 'edit':
+                return $param;
+                break;
+            case 'view':
+                return $param;
+                break;
+            case 'trash':
+                return $param;
+                break;
+            default:
+                return 0;
+                break;
+        }
 
     }
 

@@ -42,7 +42,7 @@
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                     <div class="form-group {{ $errors->has('title') ? 'has-error' : '' }} control-required">
                         {!! Form::label('title', 'Menu Type Title') !!} <span class="error_red">*</span>
-                        {!! Form::text('title', isset($menutypes->title) ? $menutypes->title : \Input::old('title'), [
+                        {!! Form::text('title', isset($menutypes->title) ? $menutypes->title : request()->old('title'), [
                             'class'       => 'form-control',
                             'placeholder' => 'Menu Type Title',
                             'required'    => 'required',
@@ -104,7 +104,7 @@
 
 
             </div>
-             <input type="hidden" name="accesstoken" value="{{\Input::has('accesstoken') ? \Input::get('accesstoken') : ''}}" />
+             <input type="hidden" name="accesstoken" value="{{request()->has('accesstoken') ? request()->get('accesstoken') : ''}}" />
 
 
             {!! Form::token() !!}

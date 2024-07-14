@@ -178,6 +178,8 @@ return [
         ExtensionsValley\Dashboard\DashboardServiceProvider::class,
         ExtensionsValley\Menumanager\MenumanagerServiceProvider::class,
         ExtensionsValley\Modulemanager\ModulemanagerServiceProvider::class,
+        ExtensionsValley\Basetheme\BasethemeServiceProvider::class,
+        ExtensionsValley\Pages\PagesServiceProvider::class,
 
     ],
 
@@ -230,7 +232,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         //'Input'=> Illuminate\Support\Facades\Input::class,
-        'WebConf'=>ExtensionsValley\Dashboard\Facades\WebConf::class,
+        'WebConf' => ExtensionsValley\Dashboard\Facades\WebConf::class,
 
     ],
 

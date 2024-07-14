@@ -1,45 +1,45 @@
 <div class="x_panel">
     <div class="pull-right">
-        @if(!empty($table->show_toolbar['view']))
+        @if (!empty($table->show_toolbar['view']))
             <button onclick="findRoute('view');" class="btn btn-dark" type="button">
-                {{$table->show_toolbar['view']}}
+                {{ $table->show_toolbar['view'] }}
             </button>
         @endif
-        @if(!empty($table->show_toolbar['add']))
+        @if (!empty($table->show_toolbar['add']))
             <button onclick="findRoute('add');" class="btn btn-success" type="button">
-                {{$table->show_toolbar['add']}}
+                {{ $table->show_toolbar['add'] }}
             </button>
         @endif
-        @if(request()->has('filter_trashed'))
-            @if(!empty($table->show_toolbar['restore']))
+        @if (request()->has('filter_trashed'))
+            @if (!empty($table->show_toolbar['restore']))
                 <button onclick="findAction('restore');" class="btn btn-warning " type="button">
-                    {{$table->show_toolbar['restore']}}
+                    {{ $table->show_toolbar['restore'] }}
                 </button>
             @endif
-            @if(!empty($table->show_toolbar['forcedelete']))
+            @if (!empty($table->show_toolbar['forcedelete']))
                 <button onclick="findAction('forcedelete');" class="btn btn-danger" type="button">
-                    {{$table->show_toolbar['forcedelete']}}
+                    {{ $table->show_toolbar['forcedelete'] }}
                 </button>
             @endif
         @else
-            @if(!empty($table->show_toolbar['edit']))
+            @if (!empty($table->show_toolbar['edit']))
                 <button onclick="findRoute('edit');" class="btn btn-primary" type="button">
-                    {{$table->show_toolbar['edit']}}
+                    {{ $table->show_toolbar['edit'] }}
                 </button>
             @endif
-            @if(!empty($table->show_toolbar['publish']))
+            @if (!empty($table->show_toolbar['publish']))
                 <button onclick="findAction('enable');" class="btn btn-info" type="button">
-                    {{$table->show_toolbar['publish']}}
+                    {{ $table->show_toolbar['publish'] }}
                 </button>
             @endif
-            @if(!empty($table->show_toolbar['unpublish']))
+            @if (!empty($table->show_toolbar['unpublish']))
                 <button onclick="findAction('disable');" class="btn btn-warning " type="button">
-                    {{$table->show_toolbar['unpublish']}}
+                    {{ $table->show_toolbar['unpublish'] }}
                 </button>
             @endif
-            @if(!empty($table->show_toolbar['trash']))
+            @if (!empty($table->show_toolbar['trash']))
                 <button onclick="findAction('remove');" class="btn btn-danger" type="button">
-                    {{$table->show_toolbar['trash']}}
+                    {{ $table->show_toolbar['trash'] }}
                 </button>
             @endif
         @endif

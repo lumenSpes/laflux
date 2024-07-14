@@ -1,5 +1,5 @@
 <?php
-namespace ExtensionsValley\Menumanager;
+namespace ExtensionsValley\Menumanager\Controllers;
 
 use ExtensionsValley\Menumanager\Validators\MenutypesValidation;
 use ExtensionsValley\Menumanager\Validators\MenuitemsValidation;
@@ -151,7 +151,7 @@ class MenuController extends Controller
             'updated_by' => $updated_by,
             'status' => $status,
         ]);
-        return redirect('admin/ExtensionsValley/Menumanager/list/Menuitems')->with(['message' => 'Details added successfully!']);
+        return redirect('admin/ExtensionsValley/menumanager/list/menuitems')->with(['message' => 'Details added successfully!']);
     }
 
     public function editMenuItems($id)
