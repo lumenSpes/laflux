@@ -49,13 +49,13 @@ class MenuitemsTable
     ];
 
 
-    public function getQuery()
+    public function getQuery($request)
     {
-        $search = \Input::get('customsearch');
-        $filter_trashed = \Input::get('filter_trashed');
-        $filter_status = \Input::has('filter_status') ? \Input::get('filter_status') : '-1';
-        $filter_menu_type = \Input::get('filter_menu_type');
-        $filter_parent_menu = \Input::get('filter_parent_menu');
+        $search = $request->get('customsearch');
+        $filter_trashed = $request->get('filter_trashed');
+        $filter_status = $request->has('filter_status') ? $request->get('filter_status') : '-1';
+        $filter_menu_type = $request->get('filter_menu_type');
+        $filter_parent_menu = $request->get('filter_parent_menu');
 
         $menuitems = \DB::table('menu_items as I')
                         ->leftjoin('menu_types AS T','T.id','=','I.menu_type')
@@ -80,7 +80,7 @@ class MenuitemsTable
             $menuitems = $menuitems->Where('I.menu_type', $filter_menu_type);
         }
 
-        return \Datatables::of($menuitems)
+        return \datatables()::of($menuitems)
             ->editColumn('sl', '<input type="checkbox" name="cid[]" value="{{$id}}" class="cid_checkbox"/>')
             ->editColumn('status', '@if($status==1) <span class="glyphicon glyphicon-ok"> Published</span> @else <span class="glyphicon glyphicon-remove"> Unpublished</span> @endif')
             ->editColumn('created_at', '@if(ExtensionsValley\Menumanager\Models\Menuitems::whereNull("deleted_at")->Where("status",1)->Where("parent_menu",$id)->count() > 0)

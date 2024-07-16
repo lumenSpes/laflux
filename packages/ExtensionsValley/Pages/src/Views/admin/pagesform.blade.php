@@ -42,7 +42,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="form-group {{ $errors->has('title') ? 'has-error' : '' }} control-required">
                         {!! Form::label('title', 'Title') !!} <span class="error_red">*</span>
-                        {!! Form::text('title', isset($pages->title) ? $pages->title : \Input::old('title'), [
+                        {!! Form::text('title', isset($pages->title) ? $pages->title : request()->old('title'), [
                             'class'       => 'form-control buildslug',
                             'placeholder' => 'Page Title',
                             'required'    => 'required',
@@ -57,13 +57,13 @@
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="form-group {{ $errors->has('slug') ? 'has-error' : '' }} control-required">
                         {!! Form::label('slug', 'Page URL') !!} <span class="error_red">*</span>
-                        {!! Form::text('slug',isset($pages->slug) ? $pages->slug : \Input::old('slug'), [
+                        {!! Form::text('slug',isset($pages->slug) ? $pages->slug : request()->old('slug'), [
                             'class'       => 'form-control placeslug',
                             'placeholder' => 'Page URL should be a valid url format it will auto created from your title',
                             'required'    => 'required',
                             $readonly
                         ]) !!}
-                        <input type="hidden" name="old_slug" value="{{isset($pages->slug) ? $pages->slug : \Input::old('slug')}}"></input>
+                        <input type="hidden" name="old_slug" value="{{isset($pages->slug) ? $pages->slug : request()->old('slug')}}"></input>
                         <span class="error_red">{{ $errors->first('slug') }}</span>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="form-group {{ $errors->has('content') ? 'has-error' : '' }} control-required">
                         {!! Form::label('content', 'Page Content') !!} <span class="error_red">*</span>
-                        {!! Form::textarea('content',isset($pages->content) ? $pages->content : \Input::old('content'), [
+                        {!! Form::textarea('content',isset($pages->content) ? $pages->content : request()->old('content'), [
                             'class'       => 'form-control texteditor'
                         ]) !!}
                         <span class="error_red">{{ $errors->first('content') }}</span>
@@ -148,7 +148,7 @@
               </div>
               </div>
             </div>
-             <input type="hidden" name="accesstoken" value="{{\Input::has('accesstoken') ? \Input::get('accesstoken') : ''}}" />
+             <input type="hidden" name="accesstoken" value="{{request()->has('accesstoken') ? request()->get('accesstoken') : ''}}" />
 
 
             {!! Form::token() !!}

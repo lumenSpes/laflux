@@ -43,7 +43,7 @@
                 </table>
             </div>
         </div>
-        @if(sizeof($table->routes))
+        @if(!empty($table->routes))
             @if(isset($table->routes['add_route']))
                 <input type="hidden" name="add_route" id="add_route" value="{{$table->routes['add_route']}}/"/>
             @endif

@@ -52,19 +52,20 @@ class ModuleController extends Controller
     public function addModules($position)
     {
 
-        $theme_layout = \Input::get('theme_layout');
+        $theme_layout = request()->get('theme_layout');
         $allmodules = \DB::table('extension_manager')
-            ->selectRaw('CONCAT(vendor, "-", name) as module_name, id')
-            ->Where('status', 1)
-            ->Where('package_type', 'laflux-module')
-            ->WhereNull('deleted_at')
-            ->pluck("module_name", 'id');
+            ->selectRaw("vendor || '-' || name as module_name, id")
+            ->where('status', 1)
+            ->where('package_type', 'laflux-module')
+            ->whereNull('deleted_at')
+            ->pluck('module_name', 'id');
+
 
         ##Get all menu items
         $menuTypes = \DB::table('menu_types')->WhereNull('deleted_at')->where('status', 1)->get();
         $menulist = \DB::table('menu_items')->WhereNull('deleted_at')->where('status', 1);
 
-        $current_module_id = \Input::get('id');
+        $current_module_id = request()->get('id');
         if ($current_module_id > 0) {
             $module_info = Modulemanager::WhereNull('deleted_at')
                 ->Where('id', $current_module_id)
@@ -80,7 +81,7 @@ class ModuleController extends Controller
 
     public function getModuleParam()
     {
-        $id = \Input::get('id');
+        $id = request()->get('id');
         if ($id > 0) {
             $moduleinfo = \DB::table('extension_manager')->where('id', $id)->first();
             return \View::make("Modulemanager::admin.moduleparam", compact('moduleinfo'));
@@ -134,22 +135,22 @@ class ModuleController extends Controller
 
         if ((!empty($moduleinfo) || trim($module_layout) == "") && $module_id != 1) {
             return redirect()->route('extensionsvalley.admin.viewmodulemanager')
-                ->with(['error' => 'Module or module Params are invalid!']);
+                ->with(['error' => 'Module or module params are invalid!']);
         } else {
 
             $param_text = [];
-            if (sizeof($module_params)) {
+            if (!empty($module_params)) {
                 foreach ($module_params as $key => $value) {
                     $param_text[$key] = $value;
                 }
             }
-            if (sizeof($param_text)) {
+            if (!empty($param_text)) {
                 $jsonparam = json_encode($param_text);
             } else {
                 $jsonparam = '';
             }
             $pages = [];
-            for ($i = 0; $i < sizeof($menu_items); $i++) {
+            for ($i = 0; $i < !empty($menu_items); $i++) {
                 $pages[] = $menu_items[$i];
             }
             $menu_slug = implode(',', $pages);

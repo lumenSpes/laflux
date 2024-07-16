@@ -26,7 +26,6 @@ class AclPermission
         $accesstoken = "";
         if (!empty($param)) {
             $action = $this->checkValidPermissions($param);
-            // dd($action);
             if ($request->has('accesstoken')) {
                 $accesstoken = base64_decode($request->input('accesstoken'));
             } else {
@@ -43,8 +42,9 @@ class AclPermission
                 ->where('acl_key', trim($accesstoken))
                 ->Where($action, 1)
                 ->count();
-            //     $token = trim($accesstoken);
-            // dd($count,$token, $user_groups, $current_url);
+
+            // $token = trim($accesstoken);
+            // dd($count, $token, $user_groups, $current_url);
 
         } else {
             $count = \DB::table('acl_permission')

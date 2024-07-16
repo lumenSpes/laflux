@@ -98,7 +98,7 @@
             $page_list = [];
         }
     ?>
-    @if(sizeof($menuTypes))
+    @if(!empty($menuTypes))
     @foreach($menuTypes as $mtype)
         <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
             {!! Form::label('is_all_page', $mtype->title) !!}
@@ -138,7 +138,7 @@
 @if(isset($module_info->params))
     <?php
            $params_data =  json_decode($module_info->params);
-           if(sizeof($params_data)){
+           if(!empty($params_data)){
            foreach($params_data as $key => $vals){
             echo '<input type="hidden" id="param_field" value="'.$key.'"/>';
             echo '<input type="hidden" id="param_vals" value="'.$vals.'"/>';

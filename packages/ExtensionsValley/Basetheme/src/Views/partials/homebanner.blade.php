@@ -3,7 +3,7 @@ $banner_items = ExtensionsValley\Banners\Models\BannerModel::getAllBannersWithTy
 ?>
  <div class="fh5co-slider">
         <div class="owl-carousel owl-carousel-fullwidth">
-            @if(sizeof($banner_items))
+            @if(!empty($banner_items))
                     @foreach($banner_items as $banner)
             <div class="item" style="background-image:url({{asset("$banner->media")}})">
                 <div class="fh5co-overlay"></div>

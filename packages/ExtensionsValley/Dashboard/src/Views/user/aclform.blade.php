@@ -78,7 +78,7 @@
                                 </th>
 
                             </tr>
-                            @if(sizeof($menugroups->all()))
+                            @if(!empty($menugroups->all()))
                                 <?php $count = 1;
                                     $maincounter = 0;
                                     $subcounter = 0;
@@ -86,7 +86,7 @@
                                 @foreach($menugroups as $key)
 
                                     <?php
-                                    if (sizeof($result)) {
+                                    if (!empty($result)) {
                                         $main_menu_data = $result->Where('acl_key', $key['acl_key'])
                                                 ->Where('group_id', request()->get('id'))
                                                 ->first();
@@ -123,7 +123,7 @@
                                         @foreach($key['sub_menu'] as $subkey)
 
                                             <?php
-                                            if (sizeof($result)) {
+                                            if (!empty($result)) {
                                                 $sub_menu_data = $result->Where('acl_key', $subkey['acl_key'])
                                                         ->Where('group_id', request()->get('id'))
                                                         ->first();

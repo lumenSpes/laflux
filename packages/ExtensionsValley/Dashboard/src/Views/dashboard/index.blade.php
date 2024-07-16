@@ -25,7 +25,7 @@
 
           ?>
 
-          @if(sizeof($widget_items))
+          @if(!empty($widget_items))
             @foreach($widget_items as $key)
               @includeIf($key['layout'],['layout_col' => $key['col']])
             @endforeach

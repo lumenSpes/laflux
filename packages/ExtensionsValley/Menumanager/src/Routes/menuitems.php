@@ -1,26 +1,35 @@
 <?php
 
-namespace ExtensionsValley\Menumanager\Controllers;
-use Illuminate\Support\Facades\Route;
-
 Route::group(['prefix' => 'admin', 'middleware' => ['admin', 'auth:admin']], function () {
-    Route::get('/extensionsvalley/menumanager/addmenuitems', [MenuController::class, 'addMenuItems'])
-    ->name('extensionsvalley.admin.addmenuitems')
-    ->middleware('acl:add');
-
-    Route::get('/extensionsvalley/menumanager/editmenuitems/{id}', [MenuController::class, 'editMenuItems'])
-    ->name('extensionsvalley.admin.editmenuitems')
-    ->middleware('acl:edit');
-
-    Route::get('/extensionsvalley/menumanager/viewmenuitems/{id}', [MenuController::class, 'viewMenuItems'])
-    ->name('extensionsvalley.admin.viewmenuitems')
-    ->middleware('acl:view');
-
-    Route::post('/extensionsvalley/menumanager/savemenuitems', [MenuController::class, 'saveMenuItems'])
-    ->name('extensionsvalley.admin.savemenuitems')
-    ->middleware('acl:add');
-
-    Route::post('/extensionsvalley/menumanager/updatemenuitems', [MenuController::class, 'updateMenuItems'])
-    ->name("extensionsvalley.admin.updatemenuitems")
-    ->middleware('acl:edit');
+    Route::get('/extensionsvalley/menumanager/addmenuitems', [
+        'middleware' => 'acl:add',
+        'name' => 'Add Menu Item',
+        'as' => 'extensionsvalley.admin.addmenuitems',
+        'uses' => '\ExtensionsValley\Menumanager\Controllers\MenuController@addMenuItems',
+    ]);
+    // Route::get('/extensionsvalley/menumanager/addmenuitems', Men)->name('extensionsvalley.admin.addmenuitems');
+    Route::get('/extensionsvalley/menumanager/editmenuitems/{id}', [
+        'middleware' => 'acl:edit',
+        'name' => 'Edit Menu Item',
+        'as' => 'extensionsvalley.admin.editmenuitems',
+        'uses' => '\ExtensionsValley\Menumanager\Controllers\MenuController@editMenuItems',
+    ]);
+    Route::get('/extensionsvalley/menumanager/viewmenuitems/{id}', [
+        'middleware' => 'acl:view',
+        'name' => 'view Menu Item',
+        'as' => 'extensionsvalley.admin.viewmenuitems',
+        'uses' => '\ExtensionsValley\Menumanager\Controllers\MenuController@viewMenuItems',
+    ]);
+    Route::post('/extensionsvalley/menumanager/savemenuitems', [
+        'middleware' => 'acl:add',
+        'name' => 'Save Menu Item',
+        'as' => 'extensionsvalley.admin.savemenuitems',
+        'uses' => '\ExtensionsValley\Menumanager\Controllers\MenuController@saveMenuItems',
+    ]);
+    Route::post('/extensionsvalley/menumanager/updatemenuitems', [
+        'middleware' => 'acl:edit',
+        'name' => 'Update Menu Item',
+        'as' => 'extensionsvalley.admin.updatemenuitems',
+        'uses' => '\ExtensionsValley\Menumanager\Controllers\MenuController@updateMenuItems',
+    ]);
 });

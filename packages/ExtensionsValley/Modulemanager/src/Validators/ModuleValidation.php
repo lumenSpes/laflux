@@ -1,5 +1,5 @@
 <?php
-namespace ExtensionsValley\Modulemanager\Validators;
+namespace Packages\ExtensionsValley\Modulemanager\Src\Validators;
 
 class ModulemanagerValidation
 {

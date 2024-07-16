@@ -1,7 +1,5 @@
 <?php
 
-namespace Packages\ExtensionsValley\Pages\Src\Database\Seeds;
-
 use Illuminate\Database\Seeder;
 
 class PagesSeeder extends Seeder

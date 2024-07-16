@@ -1,5 +1,5 @@
 <?php
-namespace ExtensionsValley\Pages\Controllers;
+namespace Packages\ExtensionsValley\Pages\Src\Controllers;
 
 use ExtensionsValley\Pages\Models\Pages;
 use Illuminate\Http\Request;
@@ -22,7 +22,7 @@ class FrontPageController extends Controller
         $themeHelper = $this->themeHelper;
         $page = Pages::Where('slug',$slug)->Where('status',1)->WhereNull('deleted_at')->first();
 
-        if(sizeof($page) == 0){
+        if(!empty($page) == 0){
             abort(404);
         }
         $title = $page->title;

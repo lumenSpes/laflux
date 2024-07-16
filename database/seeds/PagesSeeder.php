@@ -1,9 +1,6 @@
 <?php
 
-namespace ExtensionsValley\Pages\Database\seeds;
-
 use Illuminate\Database\Seeder;
-use Schema;
 
 class PagesSeeder extends Seeder
 {

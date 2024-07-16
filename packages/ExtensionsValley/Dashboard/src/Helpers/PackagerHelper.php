@@ -111,7 +111,7 @@ class PackagerHelper
         if(file_exists($file_path."/composer.json")){
             $json_data = file_get_contents($file_path."/composer.json");
             $parseData = json_decode($json_data);
-            if(sizeof($parseData)){
+            if(!empty($parseData)){
                return $parseData;
             }else{
                 return [];

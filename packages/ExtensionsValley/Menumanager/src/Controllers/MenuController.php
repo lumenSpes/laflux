@@ -39,7 +39,7 @@ class MenuController extends Controller
         $validation = \Validator::make($request->all(), with(new MenutypesValidation)->getRules());
 
         if ($validation->fails()) {
-            return redirect()->route('extensionsvalley.admin.addmenutypes',['accesstoken'=>\Input::get('accesstoken')])->withErrors($validation)->withInput();
+            return redirect()->route('extensionsvalley.admin.addmenutypes', ['accesstoken' => \Input::get('accesstoken')])->withErrors($validation)->withInput();
         }
 
         $title = $request->input('title');
@@ -87,10 +87,13 @@ class MenuController extends Controller
         $is_all_page = $request->input('is_all_page');
         $updated_by = \Auth::guard('admin')->user()->id;
         $menutypes = Menutypes::findOrFail($menutypes_id);
-        $validation = \Validator::make($request->all()
-            , with(new MenutypesValidation)->getUpdateRules($menutypes));
+        $validation = \Validator::make(
+            $request->all()
+            ,
+            with(new MenutypesValidation)->getUpdateRules($menutypes)
+        );
         if ($validation->fails()) {
-            return redirect()->route('extensionsvalley.admin.editmenutypes', ['id' => $menutypes->id,'accesstoken'=>\Input::get('accesstoken')])->withErrors($validation)->withInput();
+            return redirect()->route('extensionsvalley.admin.editmenutypes', ['id' => $menutypes->id, 'accesstoken' => \Input::get('accesstoken')])->withErrors($validation)->withInput();
         }
 
         Menutypes::Where('id', $menutypes->id)->update([
@@ -99,7 +102,7 @@ class MenuController extends Controller
             'is_all_page' => $is_all_page,
             'updated_by' => $updated_by,
             'status' => $status,
-            ]);
+        ]);
 
         return redirect('admin/ExtensionsValley/Menumanager/list/menutypes')->with(['message' => 'Details updated successfully!']);
 
@@ -125,7 +128,7 @@ class MenuController extends Controller
         $validation = \Validator::make($request->all(), with(new MenuitemsValidation)->getRules());
 
         if ($validation->fails()) {
-            return redirect()->route('extensionsvalley.admin.addmenuitems',['accesstoken'=>\Input::get('accesstoken')])->withErrors($validation)->withInput();
+            return redirect()->route('extensionsvalley.admin.addmenuitems', ['accesstoken' => \Input::get('accesstoken')])->withErrors($validation)->withInput();
         }
 
         $menu_name = $request->input('menu_name');
@@ -151,7 +154,7 @@ class MenuController extends Controller
             'updated_by' => $updated_by,
             'status' => $status,
         ]);
-        return redirect('admin/ExtensionsValley/menumanager/list/menuitems')->with(['message' => 'Details added successfully!']);
+        return redirect('admin/ExtensionsValley/Menumanager/list/Menuitems')->with(['message' => 'Details added successfully!']);
     }
 
     public function editMenuItems($id)
@@ -185,10 +188,13 @@ class MenuController extends Controller
         $is_spa = $request->input('is_spa');
         $updated_by = \Auth::guard('admin')->user()->id;
         $menuitems = Menuitems::findOrFail($menuitems_id);
-        $validation = \Validator::make($request->all()
-            , with(new MenuitemsValidation)->getUpdateRules($menuitems));
+        $validation = \Validator::make(
+            $request->all()
+            ,
+            with(new MenuitemsValidation)->getUpdateRules($menuitems)
+        );
         if ($validation->fails()) {
-            return redirect()->route('extensionsvalley.admin.editmenuitems', ['id' => $menuitems->id,'accesstoken'=>\Input::get('accesstoken')])->withErrors($validation)->withInput();
+            return redirect()->route('extensionsvalley.admin.editmenuitems', ['id' => $menuitems->id, 'accesstoken' => \Input::get('accesstoken')])->withErrors($validation)->withInput();
         }
 
 
@@ -202,7 +208,7 @@ class MenuController extends Controller
             'is_spa' => $is_spa,
             'updated_by' => $updated_by,
             'status' => $status,
-            ]);
+        ]);
 
         return redirect('admin/ExtensionsValley/Menumanager/list/menuitems')->with(['message' => 'Details updated successfully!']);
 

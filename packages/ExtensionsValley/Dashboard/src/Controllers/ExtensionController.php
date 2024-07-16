@@ -131,7 +131,7 @@ class ExtensionController extends Controller
     public function firePackageAction($file_path,$action){
 
        $package_details =  PackagerHelper::getPackageInfo($file_path);
-       if(sizeof($package_details)){
+       if(!empty($package_details)){
             $pkgdata = explode("/",$package_details->name);
             $className = str_replace("/",'\\',$package_details->name).'\\Helpers\\PackageAction';
             if(class_exists($className)){
@@ -227,7 +227,7 @@ class ExtensionController extends Controller
         if(file_exists($file_path."/composer.json")){
             $json_data = file_get_contents($file_path."/composer.json");
             $parseData = json_decode($json_data);
-            if(sizeof($parseData)){
+            if(!empty($parseData)){
                $status =  $this->insertPackage($parseData,$file_path);
                return $status;
             }else{
@@ -274,7 +274,7 @@ class ExtensionController extends Controller
             }
             $autor_name = "";
             $author_email = "";
-            if(sizeof($data->authors)){
+            if(!empty($data->authors)){
                 foreach($data->authors as $values){
                     $autor_name .= $values->name." ";
                     $author_email .= $values->email." ";
@@ -287,7 +287,7 @@ class ExtensionController extends Controller
                             ->Where('name',$pack_name)
                             ->Where('vendor',$vendor)
                             ->first();
-                if(sizeof($exists)){
+                if(!empty($exists)){
                     ##unlink old package icon
                     if(file_exists($exists->icon)){
                         unlink($exists->icon);

@@ -77,7 +77,7 @@ class DashboardController extends Controller
         $return_url = base64_decode($request->input('return_url'));
         $mesaage = "Please select an actions to perform";
 
-        if (\Schema::hasTable($table_name) && sizeof($cid) > 0) {
+        if (\Schema::hasTable($table_name) && !empty($cid)) {
 
             $acl_status = 1;
             if ($action_type == "enable" || $action_type == "disable") {

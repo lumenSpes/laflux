@@ -12,7 +12,7 @@
 
     $mod_items = ExtensionsValley\Modulemanager\Models\Modulemanager::getItemwithPosition($position);
     $current_url = Request::path();
-    if(sizeof($mod_items)){
+    if(!empty($mod_items)){
         foreach($mod_items as $mod_item){
             if(trim($mod_item->params)){
                 $params = (array)json_decode($mod_item->params);

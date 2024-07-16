@@ -45,9 +45,9 @@ class MenutypesTable
     ];
 
 
-    public function getQuery()
+    public function getQuery($request)
     {
-        $filter_trashed = \Input::get('filter_trashed');
+        $filter_trashed = $request->get('filter_trashed');
         $groups = \DB::table('menu_types')
                 ->select('id', 'title', 'position','status', 'created_at');
 
@@ -57,7 +57,7 @@ class MenutypesTable
             $groups = $groups->where('deleted_at', NULL);
         }
 
-        return \Datatables::of($groups)
+        return \datatables()::of($groups)
             ->editColumn('sl', '<input type="checkbox" name="cid[]" value="{{$id}}" class="cid_checkbox"/>')
             ->editColumn('status', '@if($status==1) <span class="glyphicon glyphicon-ok"> Published</span> @else <span class="glyphicon glyphicon-remove"> Unpublished</span> @endif')
             ->editColumn('created_at', '{{date("M-j-Y",strtotime($created_at))}}')

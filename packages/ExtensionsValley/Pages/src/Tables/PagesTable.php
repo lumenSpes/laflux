@@ -45,9 +45,9 @@ class PagesTable
     ];
 
 
-    public function getQuery()
+    public function getQuery($request)
     {
-        $filter_trashed = \Input::get('filter_trashed');
+        $filter_trashed = $request->get('filter_trashed');
         $pages = \DB::table('pages')
                     ->select('id', 'title', 'layout','status', 'created_at');
 
@@ -57,7 +57,7 @@ class PagesTable
             $pages = $pages->where('deleted_at', NULL);
         }
 
-        return \Datatables::of($pages)
+        return \datatables()::of($pages)
             ->editColumn('sl', '<input type="checkbox" name="cid[]" value="{{$id}}" class="cid_checkbox"/>')
             ->editColumn('status', '@if($status==1) <span class="glyphicon glyphicon-ok"> Published</span> @else <span class="glyphicon glyphicon-remove"> Unpublished</span> @endif')
             ->editColumn('created_at', '{{date("M-j-Y",strtotime($created_at))}}')

@@ -4,7 +4,7 @@
         $menu_items = ExtensionsValley\Menumanager\Models\Menuitems::getAllMenusWithType($position,$menu_type);
 
 ?>
-                        @if(sizeof($menu_items))
+                        @if(!empty($menu_items))
                             @foreach($menu_items as $menuitem)
                                 @if($menuitem->parent_menu == 0)
                             <li @if(Request::path() === $menuitem->source) class="active" @endif>

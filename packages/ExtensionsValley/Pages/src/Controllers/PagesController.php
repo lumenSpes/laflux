@@ -92,7 +92,7 @@ class PagesController extends Controller
         $validation = \Validator::make($request->all()
             , with(new PagesValidation)->getUpdateRules($pages));
         if ($validation->fails()) {
-            return redirect()->route('extensionsvalley.admin.editpages', ['id' => $pages->id,'accesstoken'=>\Input::get('accesstoken')])->withErrors($validation)->withInput();
+            return redirect()->route('extensionsvalley.admin.editpages', ['id' => $pages->id,'accesstoken'=>request()->get('accesstoken')])->withErrors($validation)->withInput();
         }
 
         Pages::Where('id', $pages->id)->update([

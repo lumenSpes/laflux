@@ -1,5 +1,5 @@
 <?php
-namespace ExtensionsValley\Basetheme\Controllers;
+namespace Packages\ExtensionsValley\Basetheme\Src\Controllers;
 use Illuminate\Routing\Controller;
 use ExtensionsValley\Pages\Models\Pages;
 use Illuminate\Http\Request;

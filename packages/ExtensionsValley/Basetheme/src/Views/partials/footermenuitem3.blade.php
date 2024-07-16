@@ -9,7 +9,7 @@
                         <h4 class="fh5co-footer-lead ">Products</h4>
                         @endif
                         <ul>
-                          @if(sizeof($menu_items1))
+                          @if(!empty($menu_items1))
                             @foreach($menu_items1 as $menuitem)
                                 @if($menuitem->parent_menu == 0)
                             <li @if(Request::path() === $menuitem->source) class="active" @endif>

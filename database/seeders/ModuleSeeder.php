@@ -1,6 +1,7 @@
 <?php
-
+namespace Database\Seeders;
 use Illuminate\Database\Seeder;
+use Schema;
 
 class ModuleSeeder extends Seeder
 {

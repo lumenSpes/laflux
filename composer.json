@@ -37,20 +37,22 @@
     },
     "autoload": {
         "psr-4": {
+            "ExtensionValley\\Pages\\": "packages/ExtensionValley/Pages/src",
             "ExtensionValley\\Menumanager\\": "packages/ExtensionValley/Menumanager/src",
             "ExtensionValley\\Modulemanager\\": "packages/ExtensionValley/Modulemanager/src",
             "App\\": "app/",
-            "ExtensionsValley\\Dashboard\\":"packages/ExtensionsValley/Dashboard/src/",
-            "ExtensionsValley\\Menumanager\\":"packages/ExtensionsValley/Menumanager/src/",
-            "ExtensionsValley\\Modulemanager\\":"packages/ExtensionsValley/Modulemanager/src/",
-            "ExtensionsValley\\Basetheme\\":"packages/ExtensionsValley/Basetheme/src/",
-            "ExtensionsValley\\Pages\\":"packages/ExtensionsValley/Pages/src/",
+            "ExtensionsValley\\Dashboard\\":"packages/ExtensionsValley/Dashboard/src",
+            "ExtensionsValley\\Basetheme\\":"packages/ExtensionsValley/Basetheme/src",
+            "ExtensionsValley\\Menumanager\\":"packages/ExtensionsValley/Menumanager/src",
+            "ExtensionsValley\\Modulemanager\\":"packages/ExtensionsValley/Modulemanager/src",
+            "ExtensionsValley\\Pages\\":"packages/ExtensionsValley/Pages/src",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         }
     },
     "autoload-dev": {
         "psr-4": {
+            "ExtensionValley\\Pages\\": "packages/ExtensionValley/Pages/src",
             "ExtensionValley\\Menumanager\\": "packages/ExtensionValley/Menumanager/src",
             "ExtensionValley\\Modulemanager\\": "packages/ExtensionValley/Modulemanager/src",
             "Tests\\": "tests/"

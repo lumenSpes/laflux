@@ -40,7 +40,7 @@ class UsersprofileTable extends BaseTable
             ->select(['usersprofile.id', 'usersprofile.user_id', 'usersprofile.address_1', 'usersprofile.address_2', 'usersprofile.media', 'usersprofile.street', 'usersprofile.state', 'usersprofile.pin', 'usersprofile.phone', 'usersprofile.mobile', 'usersprofile.created_at'])
             ->whereNull('usersprofile.deleted_at');
 
-        return \Datatables::of($usersprofile)
+        return \datatables()::of($usersprofile)
             ->addColumn('sl', '<input type="checkbox" name="cid[]" value="{{$id}}" class="cid_checkbox"/>')
             ->editColumn('address_1', '{{$address_1}}')
             ->editColumn('address_2', '{{$address_2}}')
