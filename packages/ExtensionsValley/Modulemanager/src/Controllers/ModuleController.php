@@ -212,7 +212,7 @@ class ModuleController extends Controller
                     'updated_by' => \Auth::guard('admin')->user()->id
                 ]);
             }
-            return redirect()->route('extensionsvalley.admin.viewmodulemanager')
+            return redirect()->route('extensionsvalley.admin.viewmodulemanager') 
                 ->with(['message' => 'Module assigned successfully!']);
         }
 
