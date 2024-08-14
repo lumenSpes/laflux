@@ -19,8 +19,6 @@ class AclPermission
 
     public function handle($request, Closure $next, $param = null)
     {
-
-
         $user_groups = \Auth::guard('admin')->user()->groups;
         $current_url = url("/") . '/' . $request->path();
         $accesstoken = "";
