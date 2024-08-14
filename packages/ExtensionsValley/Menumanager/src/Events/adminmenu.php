@@ -10,12 +10,12 @@ namespace ExtensionsValley\Menumanager\Events;
         , 'acl_key' => 'extensionsvalley.menumanager.menupanel'
         , 'sub_menu' => [
             '0' => [
-                'link' => '/admin/ExtensionsValley/menumanager/list/menutypes'
+                'link' => url('/').'/admin/ExtensionsValley/menumanager/list/menutypes'
                 , 'menu_text' => 'Menu Types'
                 , 'acl_key' => 'extensionsvalley.menumanager.menutypes'
             ],
             '1' => [
-                'link' => '/admin/ExtensionsValley/menumanager/list/menuitems'
+                'link' => url('/').'/admin/ExtensionsValley/menumanager/list/menuitems'
                 , 'menu_text' => 'Menu Items'
                 , 'acl_key' => 'extensionsvalley.menumanager.menuitems'
             ],

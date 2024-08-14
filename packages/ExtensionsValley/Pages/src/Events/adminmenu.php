@@ -10,7 +10,7 @@ namespace ExtensionsValley\Pages\Events;
         , 'acl_key' => 'extensionsvalley.pages.pagespanel'
         , 'sub_menu' => [
             '0' => [
-                'link' => '/admin/ExtensionsValley/pages/list/pages'
+                'link' => url('/').'/admin/ExtensionsValley/pages/list/pages'
                 , 'menu_text' => 'Manage Pages'
                 , 'acl_key' => 'extensionsvalley.pages.pages'
             ],

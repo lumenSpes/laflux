@@ -10,7 +10,7 @@ namespace ExtensionsValley\Modulemanager\Events;
         , 'acl_key' => 'extensionsvalley.modulemanager.modulepanel'
         , 'sub_menu' => [
             '0' => [
-                'link' => '/admin/extensionsValley/modulemanager/positionmanager'
+                'link' => url('/').'/admin/extensionsValley/modulemanager/positionmanager'
                 , 'menu_text' => 'Manage Modules'
                 , 'acl_key' => 'extensionsvalley.modulemanager.modulemanager'
             ],

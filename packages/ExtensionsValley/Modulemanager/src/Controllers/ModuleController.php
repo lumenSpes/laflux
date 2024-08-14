@@ -131,9 +131,9 @@ class ModuleController extends Controller
                 ->first();
         }
 
-        //echo $module_id;exit;
+        // dd([$moduleinfo, $module_layout]);
 
-        if ((!empty($moduleinfo) || trim($module_layout) == "") && $module_id != 1) {
+        if ((empty($moduleinfo) || trim($module_layout) == "") && $module_id != 1) {
             return redirect()->route('extensionsvalley.admin.viewmodulemanager')
                 ->with(['error' => 'Module or module params are invalid!']);
         } else {
@@ -212,7 +212,7 @@ class ModuleController extends Controller
                     'updated_by' => \Auth::guard('admin')->user()->id
                 ]);
             }
-            return redirect()->route('extensionsvalley.admin.viewmodulemanager') 
+            return redirect()->route('extensionsvalley.admin.viewmodulemanager')
                 ->with(['message' => 'Module assigned successfully!']);
         }
 

@@ -7,7 +7,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin', 'auth:admin']], fun
         'as' => 'extensionsvalley.admin.addmenuitems',
         'uses' => '\ExtensionsValley\Menumanager\Controllers\MenuController@addMenuItems',
     ]);
-    // Route::get('/extensionsvalley/menumanager/addmenuitems', Men)->name('extensionsvalley.admin.addmenuitems');
     Route::get('/extensionsvalley/menumanager/editmenuitems/{id}', [
         'middleware' => 'acl:edit',
         'name' => 'Edit Menu Item',

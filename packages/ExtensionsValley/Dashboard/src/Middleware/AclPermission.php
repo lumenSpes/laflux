@@ -50,6 +50,8 @@ class AclPermission
                 ->Where('link', $current_url)
                 ->Where('view', 1)
                 ->count();
+
+                // dd($count, $user_groups, $current_url);
         }
         if ((int) $count == 0) {
             return redirect()->route('extensionsvalley.admin.dashboard')->with(['error' => 'Access Permission Denied!']);
